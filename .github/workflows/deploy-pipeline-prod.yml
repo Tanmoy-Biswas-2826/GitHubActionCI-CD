@@ -10,7 +10,7 @@
 
   jobs:
     compile:
-      runs-on: ubuntu
+      runs-on: ubuntu-latest
       name: Compile Project
       steps:
         - name: Checkout Code
@@ -27,7 +27,7 @@
             ./mvnw clean compile
 
     unit-tests:
-      runs-on: ubuntu
+      runs-on: ubuntu-latest
       name: Unit tests
       steps:
         - name: Checkout code
@@ -43,7 +43,7 @@
           run: |
             ./mvnw clean test
     build:
-      runs-on: ubuntu
+      runs-on: ubuntu-latest
       name: Build SpringBoot
       steps:
         - name: Checkout code
