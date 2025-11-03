@@ -18,10 +18,12 @@
           with:
             fetch-depth: 0
         - name: setup JDK
-          uses: actions/checkout@v4
+          uses:  actions/setup-java@v4
           with:
             java-version: 17
             distribution: 'corretto'
+        - name: Make mvnw executable
+          run: chmod +x ./mvnw
         - name: Compile Project
           run: |
             ./mvnw clean compile
@@ -35,10 +37,12 @@
           with:
             fetch-depth: 0
         - name: Setup JDK
-          uses: actions/checkout@v4
+          uses: actions/setup-java@v4
           with:
             java-version: 17
             distribution: 'corretto'
+        - name: Make mvnw executable
+          run: chmod +x ./mvnw
         - name: Running unit Test
           run: |
             ./mvnw clean test
@@ -51,10 +55,12 @@
           with:
             fetch-depth: 0
         - name: Setup JDK
-          uses: actions/checkout@v4
+          uses: actions/setup-java@v4
           with:
             java-version: 17
             distribution: 'corretto'
+        - name: Make mvnw executable
+          run: chmod +x ./mvnw
         - name: Build Project
           run: |
             ./mvnw clean package
