@@ -1,0 +1,63 @@
+  name: SpringBoot Prod Pipeline
+  on:
+    push:
+      branches:
+        - prod
+      paths:
+        - GithubAction/**
+        - .github/workflows/**
+        - 'deploy-pipeline-prod.yml'
+
+  jobs:
+    compile:
+      runs-on: ubuntu
+      name: Compile Project
+      steps:
+        - name: Checkout Code
+          uses: action/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: setup JDK
+          uses: action/checkout@v4
+          with:
+            java-version: 17
+            distribution: 'corretto'
+        - name: Compile Project
+          run: |
+            ./mvnw clean compile
+
+    unit-tests:
+      runs-on: ubuntu
+      name: Unit tests
+      steps:
+        - name: Checkout code
+          uses: action/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Setup JDK
+          uses: action/checkout@v4
+          with:
+            java-version: 17
+            distribution: 'corretto'
+        - name: Running unit Test
+          run: |
+            ./mvnw clean test
+    build:
+      runs-on: ubuntu
+      name: Build SpringBoot
+      steps:
+        - name: Checkout code
+          uses: action/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Setup JDK
+          uses: action/checkout@v4
+          with:
+            java-version: 17
+            distribution: 'corretto'
+        - name: Build Project
+          run: |
+            ./mvnw clean package
+
+
+      
