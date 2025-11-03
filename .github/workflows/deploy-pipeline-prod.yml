@@ -22,11 +22,9 @@
           with:
             java-version: 17
             distribution: 'corretto'
-        - name: Make mvnw executable
-          run: chmod +x ./mvnw
         - name: Compile Project
           run: |
-            ./mvnw clean compile
+            mvn -B package --file pom.xml
 
     unit-tests:
       runs-on: ubuntu-latest
@@ -45,7 +43,7 @@
           run: chmod +x ./mvnw
         - name: Running unit Test
           run: |
-            ./mvnw clean test
+            mvn -B package --file pom.xml
     build:
       runs-on: ubuntu-latest
       name: Build SpringBoot
@@ -63,7 +61,7 @@
           run: chmod +x ./mvnw
         - name: Build Project
           run: |
-            ./mvnw clean package
+            mvn -B package --file pom.xml
 
 
       
