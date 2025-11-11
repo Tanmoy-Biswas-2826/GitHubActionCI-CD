@@ -7,6 +7,7 @@
         - GithubAction/**
         - .github/workflows/**
         - 'deploy-pipeline-prod.yml'
+        - 'docker/**'
 
   jobs:
     compile:
@@ -25,7 +26,6 @@
         - name: Compile Project
           run: |
             mvn -B package --file pom.xml
-
     unit-tests:
       runs-on: ubuntu-latest
       name: Unit tests
@@ -62,6 +62,5 @@
         - name: Build Project
           run: |
             mvn -B package --file pom.xml
-
-
+    
       
